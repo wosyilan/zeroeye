@@ -1,3 +1,6 @@
+[![CI](https://github.com/lobster-trap/zeroeye/actions/workflows/ci.yml/badge.svg)](https://github.com/lobster-trap/zeroeye/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 # Tent of Trials
 
 Trading and risk platform.
