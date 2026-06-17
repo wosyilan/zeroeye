@@ -1,0 +1,86 @@
+{
+  "generated_at": "2026-06-17T22:57:17.823032+00:00",
+  "commit": "8aedf0c1",
+  "diagnostic_logd": "diagnostic/build-8aedf0c1.logd",
+  "diagnostic_logd_error": null,
+  "chunked": false,
+  "chunk_size_bytes": null,
+  "password": "98083d2474e1f4ac86cf",
+  "decrypt_command": "encryptly unpack diagnostic/build-8aedf0c1.logd <outdir> --password 98083d2474e1f4ac86cf",
+  "total_modules": 10,
+  "passed": 2,
+  "failed": 8,
+  "modules": [
+    {
+      "name": "backend",
+      "status": "FAIL",
+      "elapsed_seconds": 0,
+      "artifact": null,
+      "output": "Command not found: [Errno 2] No such file or directory: 'cargo'"
+    },
+    {
+      "name": "frontend",
+      "status": "FAIL",
+      "elapsed_seconds": 8.143,
+      "artifact": null,
+      "output": "> tent-frontend@0.0.0 build\n> tsc -b && vite build\n\nsrc/utils/legacyCompat.ts(16,23): error TS1003: Identifier expected."
+    },
+    {
+      "name": "market",
+      "status": "FAIL",
+      "elapsed_seconds": 0,
+      "artifact": null,
+      "output": "Command not found: [Errno 2] No such file or directory: 'go'"
+    },
+    {
+      "name": "frailbox",
+      "status": "PASS",
+      "elapsed_seconds": 0.596,
+      "artifact": "/root/bounty-work/zeroeye-bounties/frailbox/frailbox",
+      "output": "gcc -Wall -Wextra -Wpedantic -std=c2x -O2 -g -D_FORTIFY_SOURCE=3 -fstack-protector-strong -fPIE -Iinclude -MMD -MP -c src/arena.c -o build/src/arena.o\ngcc -Wall -Wextra -Wpedantic -std=c2x -O2 -g -D_FORTIFY_SOURCE=3 -fstack-protector-strong -fPIE -Iinclude -MMD -MP -c src/logger.c -o build/src/logger.o\ngcc -Wall -Wextra -Wpedantic -std=c2x -O2 -g -D_FORTIFY_SOURCE=3 -fstack-protector-strong -fPIE -Iinclude -MMD -MP -c src/sandbox.c -o build/src/sandbox.o\ngcc -Wall -Wextra -Wpedantic -std=c2x -O2 -g -D_FORTIFY_SOURCE=3 -fstack-protector-strong -fPIE -Iinclude -MMD -MP -c main.c -o build/main.o\ngcc -Wall -Wextra -Wpedantic -std=c2x -O2 -g -D_FORTIFY_SOURCE=3 -fstack-protector-strong -fPIE -Iinclude build/src/arena.o build/src/logger.o build/src/sandbox.o build/main.o -o frailbox -pie -z relro -z now\nsrc/arena.c: In function \u2018arena_contains\u2019:\nsrc/arena.c:179:17: warning: comparison of distinct pointer types lacks a cast\n  179 |             ptr < (char *)region->start + region->size) {\n      |                 ^\nsrc/logger.c: In function \u2018log_message\u2019:\nsrc/logger.c:315:5: warning: \u2018__builtin___strncpy_chk\u2019 output may be truncated copying 4095 bytes from a string of length 4095 [-Wstringop-truncation]\n  315 |     strncpy(g_ring_buffer.entries[g_ring_buffer.head], message, MAX_LOG_LINE - 1);\n      |     ^"
+    },
+    {
+      "name": "engine",
+      "status": "PASS",
+      "elapsed_seconds": 22.838,
+      "artifact": "/root/bounty-work/zeroeye-bounties/frailbox/engine/build/trial-engine",
+      "output": "[ 11%] Building CXX object CMakeFiles/trial-engine.dir/main.cpp.o\n[ 22%] Building CXX object CMakeFiles/trial-engine.dir/core/math.cpp.o\n[ 33%] Building CXX object CMakeFiles/trial-engine.dir/core/ecs.cpp.o\n[ 44%] Building CXX object CMakeFiles/trial-engine.dir/dynamics/rigidbody.cpp.o\n[ 55%] Building CXX object CMakeFiles/trial-engine.dir/dynamics/constraint.cpp.o\n[ 66%] Building CXX object CMakeFiles/trial-engine.dir/collision/collision.cpp.o\n[ 77%] Building CXX object CMakeFiles/trial-engine.dir/root/bounty-work/zeroeye-bounties/frailbox/wat.cpp.o\n[ 88%] Building CXX object CMakeFiles/trial-engine.dir/root/bounty-work/zeroeye-bounties/frailbox/engine.cpp.o\n[100%] Linking CXX executable trial-engine\n[100%] Built target trial-engine"
+    },
+    {
+      "name": "compliance",
+      "status": "FAIL",
+      "elapsed_seconds": 0,
+      "artifact": null,
+      "output": "Command not found: [Errno 2] No such file or directory: 'javac'"
+    },
+    {
+      "name": "v2-market-stream",
+      "status": "FAIL",
+      "elapsed_seconds": 0,
+      "artifact": null,
+      "output": "Command not found: [Errno 2] No such file or directory: 'ruby'"
+    },
+    {
+      "name": "nfc-scanner",
+      "status": "FAIL",
+      "elapsed_seconds": 0,
+      "artifact": null,
+      "output": "Command not found: [Errno 2] No such file or directory: 'luac'"
+    },
+    {
+      "name": "openapi-haskell",
+      "status": "FAIL",
+      "elapsed_seconds": 0,
+      "artifact": null,
+      "output": "Command not found: [Errno 2] No such file or directory: 'ghc'"
+    },
+    {
+      "name": "openapi-tools",
+      "status": "FAIL",
+      "elapsed_seconds": 0,
+      "artifact": null,
+      "output": "Command not found: [Errno 2] No such file or directory: 'luac'"
+    }
+  ],
+  "pr_note": "Include the encrypted diagnostic logd artifact(s): diagnostic/build-8aedf0c1.logd. The encrypted .logd is the required diagnostic content for PR review; this JSON file is metadata. Maintainers may ask you to remove these diagnostic artifacts before merging."
+}
