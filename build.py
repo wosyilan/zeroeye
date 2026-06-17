@@ -1,4 +1,60 @@
-#!/usr/bin/env python3
+"""ZeroEye build system.
+
+Usage:
+  python3 build.py                          Full build (default)
+  python3 build.py -t backend               Build only backend
+  python3 build.py --skip-diagnostics       Build without diagnostics
+  python3 build.py --list-targets           Show available targets
+  python3 build.py --version                Print version and exit
+"""
+
+import argparse
+import sys
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="ZeroEye build system")
+    parser.add_argument("-t", "--target", default="", help="Comma-separated targets (backend,frontend,market)")
+    parser.add_argument("--skip-diagnostics", action="store_true", help="Skip diagnostic generation")
+    parser.add_argument("-v", "--verbose", action="count", default=0, help="Increase verbosity")
+    parser.add_argument("-o", "--output-dir", default="", help="Custom output directory")
+    parser.add_argument("--version", action="store_true", help="Print version and exit")
+    parser.add_argument("--list-targets", action="store_true", help="List build targets")
+    return parser.parse_args()
+
+ARGS = parse_args()
+
+if ARGS.version:
+    print("ZeroEye Build System v1.0.0")
+    sys.exit(0)
+
+if ARGS.list_targets:
+    print("Available build targets:")
+    print("  backend    - Backend server and API")
+    print("  frontend   - Frontend web application")
+    print("  market     - Market engine and order book")
+    print("  docs       - Documentation")
+    print("  all        - Full build (default)")
+    sys.exit(0)
+
+if ARGS.target:
+    targets = [t.strip() for t in ARGS.target.split(",")]
+    valid = {"backend", "frontend", "market", "docs", "all"}
+    invalid = [t for t in targets if t not in valid]
+    if invalid:
+        print("ERROR: Unknown target(s):", ", ".join(invalid))
+        print("Valid targets:", ", ".join(sorted(valid)))
+        sys.exit(1)
+
+if ARGS.skip_diagnostics:
+    print("Skipping diagnostic generation")
+
+if ARGS.verbose:
+    level = min(ARGS.verbose, 3)
+    verb_str = "v" * level
+    print(f"Verbosity level: {verb_str}")
+
+if ARGS.output_dir:
+    os.makedirs(ARGS.output_dir, exist_ok=True)
 
 import argparse
 import datetime
