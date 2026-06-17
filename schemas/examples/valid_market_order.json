@@ -1,0 +1,16 @@
+{
+  "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+  "symbol": "ETH/USD",
+  "side": "sell",
+  "type": "market",
+  "status": "filled",
+  "quantity": "2.5",
+  "filled_quantity": "2.5",
+  "remaining_quantity": "0",
+  "leaves_quantity": "0",
+  "cumulative_quote_quantity": "7500.00",
+  "avg_price": "3000.00",
+  "time_in_force": "ioc",
+  "created_at": "2026-01-15T11:00:00Z",
+  "updated_at": "2026-01-15T11:00:05Z"
+}

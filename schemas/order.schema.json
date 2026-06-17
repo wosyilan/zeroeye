@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/tent-of-trials/zeroeye/schemas/order.schema.json",
+  "title": "Order",
+  "description": "A trade order placed on the Tent of Trials matching engine. Represents a buy or sell instruction for a specific instrument, with support for limit, market, stop, trailing stop, and iceberg order types.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique order identifier (UUID v4)",
+      "pattern": "^[a-f0-9-]{36}$",
+      "examples": ["a1b2c3d4-e5f6-7890-abcd-ef1234567890"]
+    },
+    "client_order_id": {
+      "type": "string",
+      "description": "Client-supplied order identifier for tracking",
+      "maxLength": 64,
+      "examples": ["my-order-001"]
+    },
+    "symbol": {
+      "type": "string",
+      "description": "Trading instrument symbol",
+      "pattern": "^[A-Z0-9/-]{5,20}$",
+      "examples": ["BTC/USD", "ETH/USD", "SOL/USD"]
+    },
+    "side": {
+      "type": "string",
+      "description": "Order side",
+      "enum": ["buy", "sell"]
+    },
+    "type": {
+      "type": "string",
+      "description": "Order type",
+      "enum": ["limit", "market", "stop_limit", "stop_market", "trailing_stop", "iceberg"]
+    },
+    "status": {
+      "type": "string",
+      "description": "Current order status",
+      "enum": ["new", "partially_filled", "filled", "cancelled", "rejected", "expired"]
+    },
+    "price": {
+      "type": "string",
+      "description": "Order price as decimal string (required for limit/stop_limit orders)",
+      "pattern": "^[0-9]+(\\.[0-9]+)?$",
+      "examples": ["50000.00"]
+    },
+    "stop_price": {
+      "type": "string",
+      "description": "Stop trigger price (required for stop_limit/stop_market orders)",
+      "pattern": "^[0-9]+(\\.[0-9]+)?$",
+      "examples": ["49000.00"]
+    },
+    "quantity": {
+      "type": "string",
+      "description": "Order quantity as decimal string",
+      "pattern": "^[0-9]+(\\.[0-9]+)?$",
+      "examples": ["0.1"]
+    },
+    "filled_quantity": {
+      "type": "string",
+      "description": "Quantity filled so far",
+      "default": "0",
+      "pattern": "^[0-9]+(\\.[0-9]+)?$"
+    },
+    "remaining_quantity": {
+      "type": "string",
+      "description": "Quantity remaining to fill",
+      "pattern": "^[0-9]+(\\.[0-9]+)?$"
+    },
+    "leaves_quantity": {
+      "type": "string",
+      "description": "Quantity pending execution (iceberg visible portion)",
+      "pattern": "^[0-9]+(\\.[0-9]+)?$"
+    },
+    "cumulative_quote_quantity": {
+      "type": "string",
+      "description": "Cumulative quote currency filled",
+      "default": "0",
+      "pattern": "^[0-9]+(\\.[0-9]+)?$"
+    },
+    "avg_price": {
+      "type": "string",
+      "description": "Average fill price",
+      "default": "0",
+      "pattern": "^[0-9]+(\\.[0-9]+)?$"
+    },
+    "time_in_force": {
+      "type": "string",
+      "description": "Time in force instruction",
+      "enum": ["gtc", "ioc", "fok", "gtd"],
+      "default": "gtc"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Order creation timestamp (RFC 3339)"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp (RFC 3339)"
+    },
+    "expire_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Order expiration timestamp (GTD orders only)"
+    },
+    "iceberg_quantity": {
+      "type": "string",
+      "description": "Total quantity for iceberg orders",
+      "pattern": "^[0-9]+(\\.[0-9]+)?$"
+    },
+    "display_quantity": {
+      "type": "string",
+      "description": "Visible portion for iceberg orders",
+      "pattern": "^[0-9]+(\\.[0-9]+)?$"
+    }
+  },
+  "required": ["id", "symbol", "side", "type", "status", "quantity", "created_at"],
+  "allOf": [
+    {
+      "if": {"properties": {"type": {"const": "limit"}}},
+      "then": {"required": ["price"]}
+    },
+    {
+      "if": {"properties": {"type": {"const": "stop_limit"}}},
+      "then": {"required": ["price", "stop_price"]}
+    },
+    {
+      "if": {"properties": {"type": {"const": "stop_market"}}},
+      "then": {"required": ["stop_price"]}
+    }
+  ],
+  "additionalProperties": false
+}
