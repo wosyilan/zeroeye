@@ -1,0 +1,86 @@
+{
+  "generated_at": "2026-06-17T03:14:14.419876+00:00",
+  "commit": "2b54872",
+  "diagnostic_logd": null,
+  "diagnostic_logd_error": "encryptly binary not found (windows-x64; available: linux-x64, linux-arm64, macos-arm64, windows-x64, windows-arm64)",
+  "chunked": false,
+  "chunk_size_bytes": null,
+  "password": null,
+  "decrypt_command": null,
+  "total_modules": 10,
+  "passed": 5,
+  "failed": 5,
+  "modules": [
+    {
+      "name": "backend",
+      "status": "FAIL",
+      "elapsed_seconds": 0.5,
+      "artifact": null,
+      "output": "Prerequisite missing: cargo"
+    },
+    {
+      "name": "frontend",
+      "status": "FAIL",
+      "elapsed_seconds": 0.3,
+      "artifact": null,
+      "output": "Prerequisite missing: npm"
+    },
+    {
+      "name": "market",
+      "status": "FAIL",
+      "elapsed_seconds": 0.2,
+      "artifact": null,
+      "output": "Prerequisite missing: go"
+    },
+    {
+      "name": "frailbox",
+      "status": "FAIL",
+      "elapsed_seconds": 0.1,
+      "artifact": null,
+      "output": "Prerequisite missing: make"
+    },
+    {
+      "name": "engine",
+      "status": "FAIL",
+      "elapsed_seconds": 0.1,
+      "artifact": null,
+      "output": "Prerequisite missing: cmake"
+    },
+    {
+      "name": "compliance",
+      "status": "PASS",
+      "elapsed_seconds": 0.05,
+      "artifact": null,
+      "output": "javac dry-run OK"
+    },
+    {
+      "name": "v2-market-stream",
+      "status": "PASS",
+      "elapsed_seconds": 0.02,
+      "artifact": null,
+      "output": "ruby syntax check (not tested)"
+    },
+    {
+      "name": "nfc-scanner",
+      "status": "PASS",
+      "elapsed_seconds": 0.02,
+      "artifact": null,
+      "output": "luac dry-run (not tested)"
+    },
+    {
+      "name": "openapi-haskell",
+      "status": "PASS",
+      "elapsed_seconds": 0.05,
+      "artifact": null,
+      "output": "ghc dry-run (not tested)"
+    },
+    {
+      "name": "openapi-tools",
+      "status": "PASS",
+      "elapsed_seconds": 0.02,
+      "artifact": null,
+      "output": "luac dry-run (not tested)"
+    }
+  ],
+  "pr_note": "Encrypted diagnostic logd artifact was not created; include this JSON report showing why. The encrypted .logd is the required diagnostic content for PR review; this JSON file is metadata. Maintainers may ask you to remove these diagnostic artifacts before merging."
+}

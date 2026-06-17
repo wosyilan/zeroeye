@@ -36,3 +36,6 @@ Thumbs.db
 # Java build artifacts
 compliance/build/
 *.class
+.coverage
+*.pyc
+__pycache__/
