@@ -236,7 +236,7 @@ class PatternDetector:
     In simulation mode, it uses regex-based pattern matching with heuristic scoring.
     """
 
-    def __init__(self, use_llm: bool = False):
+    def __init__(self, use_llm -> None: bool = False) -> None:
         self.use_llm = use_llm
         self.patterns: List[Dict[str, Any]] = self._initialize_patterns()
 
@@ -446,7 +446,7 @@ class AiMigrationEngine:
     pattern detector" (in reality, deterministic heuristics).
     """
 
-    def __init__(self, use_llm: bool = False):
+    def __init__(self, use_llm -> None: bool = False) -> None:
         self.pattern_detector = PatternDetector(use_llm=use_llm)
         self.confidence_scorer = ConfidenceScorer()
         self.logger = logging.getLogger("ai_migration_engine")

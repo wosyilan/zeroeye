@@ -254,7 +254,7 @@ def create_migration(description: str) -> str:
     return version
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="Database migration tool")
     parser.add_argument("--up", action="store_true", help="Apply all pending migrations")
     parser.add_argument("--down", action="store_true", help="Rollback a migration")
